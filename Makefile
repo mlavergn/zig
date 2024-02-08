@@ -4,7 +4,7 @@
 #
 ###############################################
 
-.DEFAULT_GOAL := env
+.DEFAULT_GOAL := run
 
 ###############################################
 
@@ -16,6 +16,7 @@ setup:
 
 build:
 	zig build
+	./zig-out/bin/demo
 
 # Ref MIPs Linux targets
 mips:

@@ -22,23 +22,23 @@ pub fn http_demo() !void {
     var i: usize = 0;
 
     // while (i < 1000) : (i += 1) {
-        // Make the connection to the server.
-        var request = try client.request(.GET, uri, headers, .{});
-        defer request.deinit();
+    // Make the connection to the server.
+    var request = try client.request(.GET, uri, headers, .{});
+    defer request.deinit();
 
-        // Send the request and headers to the server.
-        try request.start();
+    // Send the request and headers to the server.
+    try request.start();
 
-        // Wait for the server to send use a response
-        try request.wait();
+    // Wait for the server to send use a response
+    try request.wait();
 
-        // Read the entire response body, but only allow it to allocate 8KB of memory.
-        const body = request.reader().readAllAlloc(allocator, 8192) catch unreachable;
-        defer allocator.free(body);
+    // Read the entire response body, but only allow it to allocate 8KB of memory.
+    const body = request.reader().readAllAlloc(allocator, 8192) catch unreachable;
+    defer allocator.free(body);
 
-        // Print out the response.
-        std.debug.print("{} {s}\n", .{i, body});
-        // const stdout = std.io.getStdOut().writer();
-        // try stdout.print("{} {s}\n", .{i, body});
+    // Print out the response.
+    std.debug.print("{} {s}\n", .{ i, body });
+    // const stdout = std.io.getStdOut().writer();
+    // try stdout.print("{} {s}\n", .{i, body});
     // }
 }

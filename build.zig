@@ -7,6 +7,10 @@ pub fn build(b: *Build) !void {
         .root_source_file = .{ .path = "src/main.zig" },
     });
 
+    // If integrating C code
+    // b.addIncludePath(.{ .path = "src" });
+    // b.addCSourceFiles(&[_][]const u8{"src/demo.c"}, &[_][]const u8{ "-g", "-O3" });
+
     const install = b.addInstallArtifact(bin, .{});
     install.step.dependOn(&bin.step);
 

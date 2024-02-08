@@ -5,7 +5,7 @@ const json = std.json;
 // - std.heap.page_allocator: allocates an entire page of memory (x86:4kb / arm64:16kb)
 // - std.heap.FixedBufferAllocator: allocate from a fixed size buffer
 // - std.heap.ArenaAllocator: allocate from a sub-allocator (eg. page) and free all at once
-//  
+//
 
 // Functions
 // - return values: throwing denoted by leading '!' on return type

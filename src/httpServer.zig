@@ -1,12 +1,11 @@
 const std = @import("std");
-const http = std.http;
 const log = std.log.scoped(.server);
 
 const server_addr = "127.0.0.1";
 const server_port = 8000;
 
 // Run the server and handle incoming requests.
-fn runServer(server: *http.Server, allocator: std.mem.Allocator) !void {
+fn runServer(server: *std.http.Server, allocator: std.mem.Allocator) !void {
     outer: while (true) {
         // Accept incoming connection.
         var response = try server.accept(.{
@@ -40,7 +39,7 @@ fn runServer(server: *http.Server, allocator: std.mem.Allocator) !void {
 }
 
 // Handle an individual request.
-fn handleRequest(response: *http.Server.Response, allocator: std.mem.Allocator) !void {
+fn handleRequest(response: *std.http.Server.Response, allocator: std.mem.Allocator) !void {
     // Log the request details.
     log.info("{s} {s} {s}", .{ @tagName(response.request.method), @tagName(response.request.version), response.request.target });
 
@@ -84,7 +83,7 @@ pub fn start() !void {
     const allocator = gpa.allocator();
 
     // Initialize the server.
-    var server = http.Server.init(allocator, .{ .reuse_address = true });
+    var server = std.http.Server.init(allocator, .{ .reuse_address = true });
     defer server.deinit();
 
     // Log the server address and port.

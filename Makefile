@@ -23,6 +23,10 @@ mips:
 	zig cc -target mips-linux-gnu pcap.c -I libpcap -L libpcap -lpcap
 	zig cc -target mips-linux-musl pcap.c -I libpcap -L libpcap -lpcap
 
+# MIPS-LE hardware
+mipsle:
+	zig cc -target mipsel-linux-gnu pcap.c -I libpcap -L libpcap -lpcap
+
 # Ref X86_64 Windows target
 windows:
 	zig build-exe -target x86_64-windows

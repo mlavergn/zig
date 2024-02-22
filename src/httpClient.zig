@@ -33,5 +33,5 @@ pub fn demo() !void {
     defer allocator.free(body);
 
     // Print out the response.
-    std.debug.print("{s}\n", .{ body });
+    std.debug.print("{s}\n", .{body});
 }

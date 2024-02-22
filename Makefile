@@ -8,6 +8,9 @@
 
 ###############################################
 
+st:
+	open -a SourceTree .
+
 open:
 	code .
 
@@ -33,6 +36,9 @@ windows:
 
 ios:
 	zig build -Dtarget=aarch64-ios
+
+format:
+	zig fmt src/*.zig
 
 release:
 	# zig build -Doptimize=ReleaseSafe

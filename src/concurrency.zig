@@ -4,7 +4,7 @@ fn performTask(arg: u32) u32 {
     std.debug.print("Starting task {}\n", .{arg});
     async std.time.sleep(std.time.ns_per_ms * 100);
     std.debug.print("Finished task {}\n", .{arg});
-    return 123;   
+    return 123;
 }
 
 pub fn demo() !void {

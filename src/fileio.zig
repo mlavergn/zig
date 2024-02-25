@@ -16,7 +16,7 @@ pub fn demo() !void {
     var result: u64 = 0;
     while (n != 0) {
         result += n;
-        std.debug.print("{s}\n", .{buf});
+        // std.debug.print("{s}\n", .{buf});
         n = try reader.read(&buf);
     }
 

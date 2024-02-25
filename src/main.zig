@@ -1,16 +1,19 @@
 const std = @import("std");
-const json = @import("json.zig");
+
+const enums = @import("enums.zig");
+const fileio = @import("fileio.zig");
 const httpClient = @import("httpClient.zig");
 const httpServer = @import("httpServer.zig");
-const enums = @import("enums.zig");
+const json = @import("json.zig");
 const thread = @import("thread.zig");
 const concurrency = @import("concurrency.zig");
 
 pub fn main() !void {
-    try concurrency.demo();
-    try thread.demo();
     try enums.demo();
-    try json.demo();
+    try fileio.demo();
     try httpClient.demo();
+    try json.demo();
+    try thread.demo();
+    try concurrency.demo();
     try httpServer.start();
 }

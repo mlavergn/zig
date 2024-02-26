@@ -1,6 +1,7 @@
 const std = @import("std");
 
 const alloc = @import("alloc.zig");
+const cffi = @import("cffi.zig");
 const crypto = @import("crypto.zig");
 const enums = @import("enums.zig");
 const fileio = @import("fileio.zig");
@@ -12,6 +13,7 @@ const concurrency = @import("concurrency.zig");
 
 pub fn main() !void {
     try alloc.demo();
+    try cffi.demo();
     try crypto.demo();
     try enums.demo();
     try fileio.demo();

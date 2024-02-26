@@ -1,14 +1,33 @@
 const std = @import("std");
 
+// const target = std.zig.CrossTarget{ .os_tag = .windows, .cpu_arch = .x86_64 };
+
 pub fn build(b: *std.Build) !void {
     const bin = b.addExecutable(.{
         .name = "demo",
         .root_source_file = .{ .path = "src/main.zig" },
     });
 
-    // If integrating C code
+    var target = b.standardTargetOptions(.{});
+
+    // Integrate Assembly
+    // bin.addAssemblyFile("foo.s");
+
+    // Integrate C code
     // b.addIncludePath(.{ .path = "src" });
     // b.addCSourceFiles(&[_][]const u8{"src/demo.c"}, &[_][]const u8{ "-g", "-O3" });
+
+    // Integrate C libs
+    if (target.getOsTag() == .macos) {
+        bin.linkSystemLibrary("sqlite3");
+        bin.linkLibC();
+    }
+
+    // Integrate ObjC framework
+    // bin.linkSystemLibrary("objc");
+    // bin.addFrameworkPath(.{ .path = "/System/Library/Frameworks" });
+    // bin.linkFramework("Foundation");
+    // bin.linkFramework("CoreFoundation");
 
     const install = b.addInstallArtifact(bin, .{});
     install.step.dependOn(&bin.step);

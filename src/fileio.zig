@@ -20,5 +20,8 @@ pub fn demo() !void {
         n = try reader.read(&buf);
     }
 
+    // write
+    // _ = try file.writer().write("blah"); 
+
     std.debug.print("\nResult: {}\n", .{result});
 }

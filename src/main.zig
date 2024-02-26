@@ -4,6 +4,7 @@ const alloc = @import("alloc.zig");
 const cffi = @import("cffi.zig");
 const crypto = @import("crypto.zig");
 const enums = @import("enums.zig");
+const env = @import("env.zig");
 const fileio = @import("fileio.zig");
 const httpClient = @import("httpClient.zig");
 const httpServer = @import("httpServer.zig");
@@ -16,6 +17,7 @@ pub fn main() !void {
     try cffi.demo();
     try crypto.demo();
     try enums.demo();
+    try env.demo();
     try fileio.demo();
     try httpClient.demo();
     try json.demo();

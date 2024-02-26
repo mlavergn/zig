@@ -21,7 +21,7 @@ pub fn demo() !void {
     }
 
     // write
-    // _ = try file.writer().write("blah"); 
+    // _ = try file.writer().write("blah");
 
     std.debug.print("\nResult: {}\n", .{result});
 }

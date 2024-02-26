@@ -8,8 +8,6 @@ pub fn build(b: *std.Build) !void {
         .root_source_file = .{ .path = "src/main.zig" },
     });
 
-    var target = b.standardTargetOptions(.{});
-
     // Integrate Assembly
     // bin.addAssemblyFile("foo.s");
 
@@ -18,10 +16,8 @@ pub fn build(b: *std.Build) !void {
     // b.addCSourceFiles(&[_][]const u8{"src/demo.c"}, &[_][]const u8{ "-g", "-O3" });
 
     // Integrate C libs
-    if (target.getOsTag() == .macos) {
-        bin.linkSystemLibrary("sqlite3");
-        bin.linkLibC();
-    }
+    bin.linkSystemLibrary("sqlite3");
+    bin.linkLibC();
 
     // Integrate ObjC framework
     // bin.linkSystemLibrary("objc");

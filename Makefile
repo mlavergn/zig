@@ -17,6 +17,10 @@ open:
 setup:
 	zig init-lib
 
+# Alternatives
+# zig build-exe src/main.zig
+# zig build-lib src/main.zig
+# zig build-obj src/main.zig
 build:
 	zig build
 	./zig-out/bin/demo
@@ -46,6 +50,9 @@ release:
 
 run:
 	zig run src/main.zig
+
+cocoa:
+	zig build --verbose-link --sysroot $(shell xcrun --sdk macosx --show-sdk-path)
 
 test:
 	zig test src/main.zig

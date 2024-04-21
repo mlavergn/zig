@@ -27,6 +27,6 @@ pub fn demo() !void {
 }
 
 test "demo" {
-    var x = demo();
+    const x = demo();
     try std.testing.expect(x == 1);
 }

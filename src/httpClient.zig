@@ -11,19 +11,17 @@ pub fn demo() !void {
     // Parse the URI.
     const uri = std.Uri.parse("https://mlavergn.github.io/demo/db.json") catch unreachable;
 
-    // Create the headers that will be sent to the server.
-    var headers = std.http.Headers{ .allocator = allocator };
-    defer headers.deinit();
-
-    try headers.append("accept", "*/*");
-    try headers.append("connection", "keep-alive");
-
     // Make the connection to the server.
-    var request = try client.request(.GET, uri, headers, .{});
+    var server_header_buffer: [1024]u8 = undefined;
+    var request = try client.open(.GET, uri, .{ .server_header_buffer = &server_header_buffer, .extra_headers = &.{
+        .{ .name = "accept", .value = "*/*" },
+        .{ .name = "connection", .value = "keep-alive" },
+    } });
     defer request.deinit();
 
     // Send the request and headers to the server.
-    try request.start();
+    try request.send();
+    try request.finish();
 
     // Wait for the server to send use a response
     try request.wait();

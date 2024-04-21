@@ -5,7 +5,10 @@ const std = @import("std");
 pub fn build(b: *std.Build) !void {
     const bin = b.addExecutable(.{
         .name = "demo",
-        .root_source_file = .{ .path = "src/main.zig" },
+        .target = b.standardTargetOptions(.{}),
+        .root_source_file = .{ 
+            .path = "src/main.zig"
+        }
     });
 
     // Integrate Assembly

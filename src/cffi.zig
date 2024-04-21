@@ -9,7 +9,7 @@ pub fn demo() !void {
     var db: ?*sqlite.sqlite3 = undefined;
     var rc: c_int = sqlite.sqlite3_open(":memory:", &db);
     if (rc != sqlite.SQLITE_OK) {
-        var errmsg = sqlite.sqlite3_errmsg(db);
+        const errmsg = sqlite.sqlite3_errmsg(db);
         std.debug.print("Error: {*}\n", .{errmsg});
         return;
     }

@@ -7,7 +7,7 @@ pub fn demo() !void {
     // random
     var rand = std.rand.DefaultPrng.init(0);
     // random number between 0 and 10
-    var num = @mod(rand.random().int(i32), 10);
+    const num = @mod(rand.random().int(i32), 10);
     std.debug.print("Random: {}\n", .{num});
 
     // spawn
@@ -25,9 +25,9 @@ pub fn demo() !void {
     // ioctls
     // var buf: i32 = 0;
     // const DKIOCEJECT = 0x20006415;
-    // const fd = std.os.STDOUT_FILENO;
-    // const rc = std.os.system.ioctl(fd, DKIOCEJECT, &buf);
-    // const err = std.os.errno(rc);
+    // const fd = std.posix.STDOUT_FILENO;
+    // const rc = std.posix.system.ioctl(fd, DKIOCEJECT, &buf);
+    // const err = std.posix.errno(rc);
     // std.debug.print("ioctl: {}{!}\n", .{ buf, err });
 
     // logging

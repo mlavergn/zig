@@ -26,7 +26,7 @@ build:
 	./zig-out/bin/demo
 
 clean:
-	rm -rf zig-out
+	rm -rf zig-cache zig-out
 
 # eg. apple-m2
 cpus:

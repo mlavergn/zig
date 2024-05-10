@@ -53,6 +53,9 @@ windows:
 ios:
 	zig build -Dtarget=aarch64-ios
 
+macos:
+	zig build -Dtarget=aarch64-macos
+
 format:
 	zig fmt src/*.zig
 

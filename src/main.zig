@@ -11,6 +11,7 @@ const httpServer = @import("httpServer.zig");
 const json = @import("json.zig");
 const thread = @import("thread.zig");
 const concurrency = @import("concurrency.zig");
+const process = @import("process.zig");
 
 pub fn main() !void {
     try alloc.demo();
@@ -23,5 +24,6 @@ pub fn main() !void {
     try json.demo();
     try thread.demo();
     try concurrency.demo();
+    try process.demo();
     try httpServer.start();
 }
